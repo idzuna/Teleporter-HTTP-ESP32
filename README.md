@@ -150,7 +150,7 @@ The port configuration is loaded only once at startup and modifications after st
 
 BASESSID is defined in this source code.
 
-## IP address:
+## IP address
 
 The device IP address is determined by GROUPSEL and ROLESELn ports.
 
@@ -165,3 +165,40 @@ The device IP address is determined by GROUPSEL and ROLESELn ports.
 |   2   | server  | BASEIPADDRESS +  8 |
 |   2   | client0 | BASEIPADDRESS +  9 |
 |   2   | client1 | BASEIPADDRESS + 10 |
+
+## Communication protocol
+
+### Send status from a client device to SERVERPORT of a server device, and respond status from the server to the client
+
+Request:
+
+    POST / HTTP/1.1
+    Content-Type: application/x-www-form-urlencoded
+    Content-Length: 124
+    
+    NAME=CLIENT0&INPUT0=1&INPUT1=1&INPUT2=1&INPUT3=1&TEMPERATURE=FFF&A0=FFF&A3=FFF&A6=FFF&A7=FFF&TIMESTAMP=FFF&LASTUPDATE0=FFF
+
+Response:
+
+    HTTP/1.0 200 OK
+    Content-type: text/plain
+    
+    NAME=SERVER&INPUT0=1&INPUT1=1&INPUT2=1&INPUT3=1&TEMPERATURE=FFF&A0=FFF&A3=FFF&A6=FFF&A7=FFF&TIMESTAMP=FFF&LASTUPDATE0=FFF&LASTUPDATE1=FFF
+
+### Send request from user to WEBAPIPORT of a device
+
+Request:
+
+    GET / HTTP/1.1
+    
+
+Response:
+
+    HTTP/1.0 200 OK
+    Content-type: text/plain
+    
+    NAME=CLIENT0&INPUT0=1&INPUT1=1&INPUT2=1&INPUT3=1&TEMPERATURE=FFF&A0=FFF&A3=FFF&A6=FFF&A7=FFF&TIMESTAMP=FFF&LASTUPDATE0=FFF
+
+*   TIMESTAMP is time from startup in ms.
+*   LASTUPDATEn is the timestamp when the last communication between the other device has been performed.
+*   LASTUPDATE1 exists only in server with client1 (ROLESEL0 = H and ROLESEL1 = L).
