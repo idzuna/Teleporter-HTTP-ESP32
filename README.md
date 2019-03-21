@@ -60,7 +60,7 @@ Before the first communication, OUTPUTn stays high if the signal inversion is di
 ### INPUTn
 
 Digital input ports.
-Each port is pulled-up by 45kƒ¶ internal resistor.
+Each port is pulled-up by 45kÆ’Â¶ internal resistor.
 In order not to miss input trigger between polling interval, falling edge interrput is implemented.
 
                                    * cause falling edge interrupt
@@ -104,11 +104,11 @@ The port configuration is loaded only once at startup and modifications after st
 ### ROLESELn
 
 Device role selection ports.
-Each port is pulled-up by 45kƒ¶ internal resistor and controls IP address and device role.
+Each port is pulled-up by 45kÆ’Â¶ internal resistor and controls IP address and device role.
 The port configuration is loaded only once at startup and modifications after startup have no effects.
 
 | ROLESEL0 | ROLESEL1 |  Role   |         OUTPUT0-1       |           OUTPUT2-3     |  LED0   |  LED1   |
------------|----------|---------|---------------------------------------------------|---------|----------
+-----------|----------|---------|-------------------------|-------------------------|---------|----------
 |    H     |    H     | server  | INPUT0-1 of the client0 | INPUT2-3 of the client0 | client0 |    z    |
 |    L     |    H     | client0 | INPUT0-1 of the server  | INPUT2-3 of the server  | server  |    z    |
 |    H     |    L     | server  | INPUT0-1 of the client0 | INPUT0-1 of the client1 | client0 | client1 |
